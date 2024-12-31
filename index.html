@@ -7,17 +7,19 @@
     <meta name="theme-color" content="#4f46e5" />
     <meta name="description" content="Make every moment special with your loved one" />
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-    <link rel="manifest" href="/together-time-evening/manifest.json" />
+    <link rel="manifest" href="/new-year-2025/manifest.json" />
     <title>Together Time Evening</title>
-    <script type="module" crossorigin src="/together-time-evening/assets/index-DhSG3SgN.js"></script>
-    <link rel="stylesheet" crossorigin href="/together-time-evening/assets/index-Bxfu5tAL.css">
-  <link rel="manifest" href="/together-time-evening/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/together-time-evening/registerSW.js"></script></head>
+    <script type="module" crossorigin src="/new-year-2025/assets/index-CpxNwAJ4.js"></script>
+    <link rel="stylesheet" crossorigin href="/new-year-2025/assets/index-Bxfu5tAL.css">
+  <link rel="manifest" href="/new-year-2025/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/new-year-2025/registerSW.js"></script></head>
   <body>
     <div id="root"></div>
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js');
+          navigator.serviceWorker.register('/new-year-2025/service-worker.js', {
+            scope: '/new-year-2025/'
+          });
         });
       }
     </script>
