@@ -1,22 +1,7 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import type { Activity } from "../types/activity";
-import { activitiesService } from "../services/activities";
+// import type { Activity } from "../types/activity";
 
-interface ActivityContextType {
-  activities: Activity[];
-  addActivity: (activity: Omit<Activity, "id">) => void;
-  removeActivity: (id: string) => void;
-  updateActivity: (id: string, activity: Omit<Activity, "id">) => void;
-  resetActivities: () => void;
-}
-
-const ActivityContext = createContext<ActivityContextType | undefined>(
-  undefined
-);
-
-// const defaultActivities: Activity[] = [
+// export const defaultActivities: Omit<Activity, "id">[] = [
 //   {
-//     id: "1",
 //     name: "Movie Night",
 //     emoji: "🎥",
 //     category: "movie",
@@ -25,7 +10,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "2",
 //     name: "Board Game Battle",
 //     emoji: "🎲",
 //     category: "game",
@@ -34,7 +18,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "3",
 //     name: "Cooking Adventure",
 //     emoji: "🍳",
 //     category: "cooking",
@@ -43,7 +26,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "4",
 //     name: "Book Club Date",
 //     emoji: "📖",
 //     category: "reading",
@@ -52,7 +34,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "5",
 //     name: "Nature Walk",
 //     emoji: "🏞️",
 //     category: "outdoor",
@@ -70,7 +51,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "7",
 //     name: "Picnic Time",
 //     emoji: "🧺",
 //     category: "outdoor",
@@ -79,7 +59,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "8",
 //     name: "Art Session",
 //     emoji: "🎨",
 //     category: "creative",
@@ -88,7 +67,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "9",
 //     name: "Puzzle Challenge",
 //     emoji: "🧩",
 //     category: "game",
@@ -97,7 +75,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "10",
 //     name: "Stargazing",
 //     emoji: "🌟",
 //     category: "outdoor",
@@ -106,7 +83,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "11",
 //     name: "Baking Fun",
 //     emoji: "🧁",
 //     category: "cooking",
@@ -115,7 +91,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "12",
 //     name: "Video Game Quest",
 //     emoji: "🎮",
 //     category: "game",
@@ -133,7 +108,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "14",
 //     name: "Photo Adventure",
 //     emoji: "📸",
 //     category: "creative",
@@ -142,7 +116,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "15",
 //     name: "Karaoke Night",
 //     emoji: "🎤",
 //     category: "music",
@@ -151,7 +124,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "16",
 //     name: "Garden Together",
 //     emoji: "🌱",
 //     category: "outdoor",
@@ -160,7 +132,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "17",
 //     name: "DIY Project",
 //     emoji: "🔨",
 //     category: "creative",
@@ -169,7 +140,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "18",
 //     name: "Coffee Tasting",
 //     emoji: "☕",
 //     category: "food",
@@ -178,7 +148,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "19",
 //     name: "Dance Lesson",
 //     emoji: "💃",
 //     category: "active",
@@ -187,7 +156,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "20",
 //     name: "Memory Lane",
 //     emoji: "📱",
 //     category: "relaxing",
@@ -196,7 +164,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "21",
 //     name: "Silent Movie Night",
 //     emoji: "🎬",
 //     category: "movie",
@@ -205,7 +172,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "22",
 //     name: "Truth or Dare",
 //     emoji: "🎯",
 //     category: "game",
@@ -214,7 +180,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "23",
 //     name: "Homemade Sushi",
 //     emoji: "🍱",
 //     category: "cooking",
@@ -223,7 +188,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "24",
 //     name: "Moonlight Walk",
 //     emoji: "🌙",
 //     category: "outdoor",
@@ -232,7 +196,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "25",
 //     name: "Blanket Fort",
 //     emoji: "🏰",
 //     category: "relaxing",
@@ -241,7 +204,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "26",
 //     name: "Vision Board",
 //     emoji: "✨",
 //     category: "creative",
@@ -250,7 +212,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "27",
 //     name: "Winter Hot Cocoa",
 //     emoji: "☕",
 //     category: "seasonal",
@@ -260,7 +221,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "28",
 //     name: "Summer Picnic",
 //     emoji: "🧺",
 //     category: "seasonal",
@@ -270,7 +230,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "29",
 //     name: "Autumn Leaf Hunt",
 //     emoji: "🍁",
 //     category: "seasonal",
@@ -280,7 +239,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "30",
 //     name: "Spring Garden",
 //     emoji: "🌸",
 //     category: "seasonal",
@@ -290,7 +248,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "31",
 //     name: "Budget Movie Night",
 //     emoji: "🏠",
 //     category: "budget",
@@ -308,7 +265,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "33",
 //     name: "Time Capsule",
 //     emoji: "📦",
 //     category: "creative",
@@ -317,7 +273,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "34",
 //     name: "Dream Vacation",
 //     emoji: "✈️",
 //     category: "planning",
@@ -326,7 +281,6 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 //   {
-//     id: "35",
 //     name: "Couple's Workout",
 //     emoji: "🏋️",
 //     category: "active",
@@ -335,63 +289,3 @@ const ActivityContext = createContext<ActivityContextType | undefined>(
 //     isCustom: false,
 //   },
 // ];
-
-export const ActivityProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [activities, setActivities] = useState<Activity[]>([]);
-
-  useEffect(() => {
-    const loadActivities = async () => {
-      const activities = await activitiesService.getActivities();
-      setActivities(activities);
-    };
-
-    loadActivities();
-  }, []);
-
-  const addActivity = async (activity: Omit<Activity, "id">) => {
-    const newActivity = await activitiesService.addActivity(activity);
-    setActivities((prev) => [...prev, newActivity]);
-  };
-
-  const removeActivity = async (id: string) => {
-    await activitiesService.deleteActivity(id);
-    setActivities((prev) => prev.filter((activity) => activity.id !== id));
-  };
-
-  const updateActivity = async (id: string, activity: Omit<Activity, "id">) => {
-    await activitiesService.updateActivity(id, activity);
-    setActivities((prev) =>
-      prev.map((a) => (a.id === id ? { ...activity, id } : a))
-    );
-  };
-
-  const resetActivities = () => {
-    setActivities([]);
-  };
-
-  return (
-    <ActivityContext.Provider
-      value={{
-        activities,
-        addActivity,
-        removeActivity,
-        updateActivity,
-        resetActivities,
-      }}
-    >
-      {children}
-    </ActivityContext.Provider>
-  );
-};
-
-export const useActivities = () => {
-  const context = useContext(ActivityContext);
-  if (context === undefined) {
-    throw new Error("useActivities must be used within an ActivityProvider");
-  }
-  return context;
-};

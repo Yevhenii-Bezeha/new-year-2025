@@ -7,6 +7,8 @@ import Wheel from "./Wheel";
 import Confetti from "../ui/Confetti";
 import ResultReveal from "./ResultReveal";
 import { storage } from "../../utils/storage";
+import { activitiesService } from "../../services/activities";
+import { Activity } from "../../types/activity";
 
 const WheelGame = () => {
   const { activities } = useActivities();
@@ -35,10 +37,12 @@ const WheelGame = () => {
     storage.setSelectedActivities(selectedActivities.map((a) => a.id));
   }, [selectedActivities]);
 
-  const handleSpin = (activity: (typeof activities)[0]) => {
+  const handleSpin = async (activity: Activity) => {
     setGameState("result");
     setResult(activity);
     storage.addSpinHistory(activity.id);
+    // Update last used timestamp when activity is selected
+    await activitiesService.updateLastUsed(activity.id);
   };
 
   const handleReset = () => {

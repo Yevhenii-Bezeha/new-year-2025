@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import WheelGame from "../wheel/WheelGame";
 import PageTransition from "../ui/PageTransition";
 

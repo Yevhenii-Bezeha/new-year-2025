@@ -4,6 +4,7 @@ import { useActivities } from "../../context/ActivityContext";
 import { useGameSounds } from "../../hooks/useGameSounds";
 import { useNavigation } from "../../hooks/useNavigation";
 import PageTransition from "../ui/PageTransition";
+import { RecentActivities } from "../activities/RecentActivities";
 
 const Home = () => {
   const { activities } = useActivities();
@@ -45,27 +46,11 @@ const Home = () => {
           </div>
         </motion.button>
 
-        {/* Recent Activities */}
-        <section className="space-y-4">
-          <h2 className="text-xl font-medium text-primary-800 dark:text-primary-200">
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Recent Activities
           </h2>
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-primary-100 dark:border-primary-800">
-            <div className="space-y-2">
-              {activities.slice(0, 3).map((activity) => (
-                <motion.div
-                  key={activity.id}
-                  className="flex items-center space-x-3 p-2 hover:bg-primary-50 dark:hover:bg-primary-900 rounded-lg"
-                  whileHover={{ x: 4 }}
-                >
-                  <span className="text-2xl">{activity.emoji}</span>
-                  <span className="text-primary-700 dark:text-primary-300">
-                    {activity.name}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          <RecentActivities activities={activities} />
         </section>
       </div>
     </PageTransition>

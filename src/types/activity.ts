@@ -21,8 +21,10 @@ export interface Activity {
   name: string;
   emoji: string;
   description: string;
-  category: ActivityCategory;
+  category: string;
   moods: string[];
-  isCustom?: boolean;
-  season?: Season;
+  isCustom: boolean;
+  createdAt?: string;
+  lastUsedAt?: string;
+  usageCount?: number;
 }

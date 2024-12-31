@@ -1,7 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import type { Settings } from "../types/settings";
-import { storage } from "../utils/storage";
-
 interface SettingsContextType {
   settings: Settings;
   updateSettings: (newSettings: Partial<Settings>) => void;

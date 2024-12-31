@@ -19,6 +19,23 @@ const categories: { value: ActivityCategory; label: string }[] = [
   { value: "other", label: "Other" },
 ];
 
+const AVAILABLE_MOODS = [
+  { value: "relaxing", label: "Relaxing" },
+  { value: "romantic", label: "Romantic" },
+  { value: "active", label: "Active" },
+  { value: "creative", label: "Creative" },
+  { value: "fun", label: "Fun" },
+  { value: "intellectual", label: "Intellectual" },
+  { value: "peaceful", label: "Peaceful" },
+  { value: "energetic", label: "Energetic" },
+  { value: "productive", label: "Productive" },
+  { value: "cozy", label: "Cozy" },
+  { value: "silly", label: "Silly" },
+  { value: "nostalgic", label: "Nostalgic" },
+  { value: "competitive", label: "Competitive" },
+  { value: "teamwork", label: "Teamwork" },
+];
+
 const AddActivityModal = ({
   isOpen,
   onClose,
@@ -29,7 +46,7 @@ const AddActivityModal = ({
     emoji: "",
     category: "custom" as ActivityCategory,
     description: "",
-    moods: [] as ActivityMood[],
+    moods: [] as any[],
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -39,13 +56,13 @@ const AddActivityModal = ({
     setFormData({
       name: "",
       emoji: "",
-      category: "custom",
+      category: "custom" as ActivityCategory,
       description: "",
       moods: [],
     });
   };
 
-  const toggleMood = (mood: ActivityMood) => {
+  const toggleMood = (mood: any) => {
     setFormData((prev) => ({
       ...prev,
       moods: prev.moods.includes(mood)
@@ -115,7 +132,7 @@ const AddActivityModal = ({
             Moods
           </label>
           <div className="flex flex-wrap gap-2">
-            {moods.map((mood) => (
+            {AVAILABLE_MOODS.map((mood: any) => (
               <button
                 key={mood.value}
                 type="button"
