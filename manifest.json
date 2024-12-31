@@ -5,8 +5,20 @@
   "start_url": "/new-year-2025/",
   "scope": "/new-year-2025/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#4f46e5",
+  "prefer_related_applications": false,
+  "categories": ["lifestyle", "entertainment"],
+  "shortcuts": [
+    {
+      "name": "Spin the Wheel",
+      "short_name": "Wheel",
+      "description": "Choose a random activity",
+      "url": "/new-year-2025/wheel",
+      "icons": [{ "src": "icons/icon-96x96.png", "sizes": "96x96" }]
+    }
+  ],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
