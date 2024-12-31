@@ -11,6 +11,7 @@ import type { TabId } from "./types/navigation";
 import { ActivityProvider } from "./context/ActivityContext";
 import { NavigationProvider } from "./context/NavigationContext";
 import { useSettings } from "./context/SettingsContext";
+import InstallPrompt from "./components/InstallPrompt";
 
 function App() {
   const { settings, updateSettings } = useSettings();
@@ -101,6 +102,7 @@ function App() {
           </main>
         </div>
         <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
+        <InstallPrompt />
       </ActivityProvider>
     </NavigationProvider>
   );
