@@ -4,6 +4,7 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/new-year-2025/", // Change this to your repository name
   plugins: [
     react(),
     VitePWA({
@@ -14,6 +15,8 @@ export default defineConfig({
         short_name: "Together Time",
         description: "Make every moment special with your loved one",
         theme_color: "#4f46e5",
+        start_url: "/new-year-2025/", // Change this to your repository name
+        scope: "/new-year-2025/", // Change this to your repository name
         icons: [
           {
             src: "icons/icon-192x192.png",
@@ -29,5 +32,4 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/together-time-evening/", // Replace with your repository name
 });
